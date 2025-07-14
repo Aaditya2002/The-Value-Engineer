@@ -89,7 +89,7 @@ const ChatBot = () => {
       {/* Chat Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-50 w-16 h-16 luxury-gradient rounded-full shadow-lg flex items-center justify-center text-white transition-all duration-300 ${
+        className={`fixed bottom-6 right-6 z-50 w-16 h-16 bg-pastel-orange-500 rounded-full shadow-lg flex items-center justify-center text-white transition-all duration-300 ${
           isOpen ? "scale-0" : "scale-100 hover:scale-110"
         }`}
         whileHover={{ scale: 1.1 }}
@@ -105,10 +105,11 @@ const ChatBot = () => {
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
-            className="fixed bottom-6 right-6 z-50 w-96 h-[500px] glass-morphism rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-full max-w-md h-[500px] bg-white/90 backdrop-blur-md border border-gray-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden sm:max-w-md max-w-[calc(100vw-2rem)] sm:right-6 right-2"
+            style={{ boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.25)' }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 p-4 flex items-center justify-between">
+            <div className="bg-pastel-orange-500 p-4 flex items-center justify-between shadow-md">
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                   <Bot className="w-4 h-4 text-white" />
@@ -124,7 +125,7 @@ const ChatBot = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 p-4 overflow-y-auto space-y-4">
+            <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-white/70">
               {messages.map((message) => (
                 <div key={message.id} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
                   <div
@@ -134,7 +135,7 @@ const ChatBot = () => {
                   >
                     <div
                       className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                        message.sender === "user" ? "bg-pale-sage-500" : "bg-muted-coral-500"
+                        message.sender === "user" ? "bg-pastel-orange-500" : "bg-pastel-orange-400"
                       }`}
                     >
                       {message.sender === "user" ? (
@@ -144,8 +145,10 @@ const ChatBot = () => {
                       )}
                     </div>
                     <div
-                      className={`px-3 py-2 rounded-lg text-sm ${
-                        message.sender === "user" ? "bg-pale-sage-500 text-white" : "bg-gray-100 text-gray-800"
+                      className={`px-3 py-2 rounded-lg text-sm shadow-sm ${
+                        message.sender === "user"
+                          ? "bg-pastel-orange-500 text-white border border-pastel-orange-600"
+                          : "bg-gray-100 text-gray-800"
                       }`}
                     >
                       {message.text}
@@ -163,7 +166,7 @@ const ChatBot = () => {
                     <button
                       key={reply}
                       onClick={() => handleQuickReply(reply)}
-                      className="px-3 py-1 text-xs bg-pale-sage-100 text-pale-sage-700 rounded-full hover:bg-pale-sage-200 transition-colors"
+                      className="px-3 py-1 text-xs bg-pastel-orange-500 text-white rounded-full border border-pastel-orange-600 shadow-sm hover:bg-pastel-orange-600 transition-colors"
                     >
                       {reply}
                     </button>
@@ -173,7 +176,7 @@ const ChatBot = () => {
             )}
 
             {/* Input */}
-            <div className="p-4 border-t border-gray-200">
+            <div className="p-4 border-t border-gray-200 bg-white/90">
               <div className="flex space-x-2">
                 <input
                   type="text"
@@ -181,11 +184,11 @@ const ChatBot = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                   placeholder="Type your message..."
-                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pale-sage-500 text-sm"
+                  className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pastel-orange-500 text-sm"
                 />
                 <button
                   onClick={handleSendMessage}
-                  className="px-4 py-2 bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white rounded-lg hover:shadow-md transition-all duration-200"
+                  className="px-4 py-2 bg-pastel-orange-500 text-white rounded-lg hover:bg-pastel-orange-600 hover:shadow-md transition-all duration-200"
                 >
                   <Send className="w-4 h-4" />
                 </button>
