@@ -18,11 +18,11 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Value Engineer Pro - Precision Construction Estimating",
+  title: "The Value Engineering - Peace of Mind in Construction Estimating",
   description:
-    "Professional construction estimating services trusted by developers and contractors. 500+ projects, 99.2% accuracy rate, 24hr turnaround.",
-  keywords: "construction estimating, cost planning, quantity takeoffs, value engineering",
-    generator: 'v0.dev'
+    "We are selling peace of mind. Your Scope. Your Format. Your Timeline. We Estimate It All. Trusted by contractors worldwide.",
+  keywords: "construction estimating, quantity takeoff, value engineering, peace of mind, free sample estimate, custom workflow",
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -33,10 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="min-h-screen">
-        <LoadingAnimation />
         <Header />
         <main className="pt-20">{children}</main>
         <Footer />
+        <div className="text-center text-xs text-gray-400 py-2">
+          Now featuring a video background on the homepage. Logo & color scheme updates coming soon.
+        </div>
         <ChatBot />
       </body>
     </html>

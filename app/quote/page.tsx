@@ -35,6 +35,7 @@ const QuotePage = () => {
   })
   const [estimatedCost, setEstimatedCost] = useState<number | null>(null)
   const [selectedConsultation, setSelectedConsultation] = useState("")
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const totalSteps = 4
 
@@ -92,6 +93,20 @@ const QuotePage = () => {
     },
   ]
 
+  const faqs = [
+    { q: 'Do you include labor or material pricing in the estimates?', a: 'No. We only provide quantities. You can apply your own pricing as per vendor or region.' },
+    { q: 'What types of projects do you work on?', a: 'We cover residential, commercial, and industrial projects.' },
+    { q: 'Which trades do you cover?', a: 'Almost all trades from drywall, flooring, HVAC, electrical, to landscaping.' },
+    { q: 'How do I get started?', a: 'Just send us your project files and what you need. We’ll handle the rest.' },
+    { q: 'Can I request a sample before committing?', a: 'Yes, we offer a no-cost sample so you can check the quality.' },
+    { q: 'What payment methods do you accept?', a: 'We accept SWIFT/ACH bank transfers, PayPal, and Wise.' },
+    { q: 'What estimating software do you use?', a: 'We use PlanSwift, OST, Bluebeam, and Excel.' },
+    { q: 'Can you work in our templates or formats?', a: 'Absolutely. We customize everything to your system.' },
+    { q: 'Do you handle international projects?', a: 'Yes, USA, Canada, UK, Australia (Imperial & Metric).' },
+    { q: 'Can you estimate change orders or addenda?', a: 'Yes, and we can also compare them to your original estimate.' },
+    { q: 'Can you attend coordination meetings?', a: 'Yes, we’re available for Zoom/online meetings as needed.' },
+  ]
+
   const calculateEstimate = () => {
     const projectType = projectTypes.find((t) => t.id === formData.projectType)
     const projectSize = projectSizes.find((s) => s.id === formData.projectSize)
@@ -138,31 +153,85 @@ const QuotePage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-0">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80"
-            alt="Construction quote background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50" />
-        </div>
-        
+        <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="font-serif text-5xl md:text-6xl font-bold text-white mb-6">
-              Get Your <span className="text-gradient">Instant Quote</span>
+              Free Sample Estimate
             </h1>
-            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed">
-              Professional construction estimates in minutes. Answer a few questions and receive a detailed quote
-              tailored to your project.
+            <p className="text-xl md:text-2xl text-gray-100 max-w-3xl mx-auto leading-relaxed mb-4">
+              Experience our precision and quality with a complimentary sample estimate. No obligations, no hidden costs – just professional results delivered in 24-48 hours.
+            </p>
+            <p className="text-lg text-gray-200 max-w-2xl mx-auto mb-8">
+              Try a free sample takeoff to see the quality and clarity of our work — no strings attached.
             </p>
           </motion.div>
+        </div>
+      </section>
+      <section className="py-10 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-pastel-orange-50 rounded-xl p-8 shadow text-gray-800">
+            <h2 className="font-serif text-3xl font-bold mb-4">Sample Limitations</h2>
+            <ul className="list-disc list-inside mb-4">
+              <li>One free sample per company</li>
+              <li>Sample covers up to 2,000 sq ft or equivalent scope</li>
+              <li>Complex projects may receive partial estimates</li>
+              <li>Full project quotes available after sample review</li>
+            </ul>
+            <h3 className="font-serif text-2xl font-bold mb-2">What You'll Receive</h3>
+            <ul className="list-disc list-inside">
+              <li>Professional estimate for a portion of your project</li>
+              <li>Detailed breakdown showing our methodology</li>
+              <li>Quality that matches our paid services</li>
+              <li>No watermarks or limitations</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      {/* FAQ Section */}
+      <section className="py-20 bg-cream-orange-50 faq-section">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-center">Frequently Asked Questions</h2>
+          <div className="space-y-4">
+            {faqs.map((faq, idx) => (
+              <div key={idx} className="rounded-xl bg-white p-6 shadow border-l-4 border-pastel-orange-500">
+                <button
+                  className="w-full flex justify-between items-center text-left font-semibold text-lg mb-2 text-pastel-orange-600 focus:outline-none"
+                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+                  aria-expanded={openFaq === idx}
+                >
+                  <span>Q: {faq.q}</span>
+                  <span className={`transform transition-transform ${openFaq === idx ? 'rotate-90' : ''}`}>▶</span>
+                </button>
+                {openFaq === idx && (
+                  <div className="mt-2 text-gray-700">
+                    A: {faq.a}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ready to Join Our Success Stories? CTA Section */}
+      <section className="py-16 bg-pastel-orange-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">Ready to Join Our Success Stories?</h2>
+          <p className="text-lg text-gray-700 mb-8">
+            Discover how we can help you achieve outstanding results on your next project. Contact us for references or to discuss your needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/quote" className="bg-pastel-orange-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pastel-orange-700 transition-colors">
+              Get Your Free Sample
+            </a>
+            <a href="/contact" className="border-2 border-pastel-orange-600 text-pastel-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-pastel-orange-600 hover:text-white transition-colors">
+              Contact Us
+            </a>
+          </div>
         </div>
       </section>
 
@@ -177,7 +246,7 @@ const QuotePage = () => {
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
                       i + 1 <= currentStep
-                        ? "bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white"
+                        ? "bg-pastel-orange-500 text-white"
                         : "bg-gray-200 text-gray-500"
                     }`}
                   >
@@ -186,7 +255,7 @@ const QuotePage = () => {
                   {i < totalSteps - 1 && (
                     <div
                       className={`w-16 h-1 mx-2 transition-all duration-300 ${
-                        i + 1 < currentStep ? "bg-gradient-to-r from-pale-sage-500 to-muted-coral-500" : "bg-gray-200"
+                        i + 1 < currentStep ? "bg-pastel-orange-500" : "bg-gray-200"
                       }`}
                     />
                   )}
@@ -225,11 +294,11 @@ const QuotePage = () => {
                           onClick={() => updateFormData("projectType", type.id)}
                           className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                             formData.projectType === type.id
-                              ? "border-pale-sage-500 bg-pale-sage-50"
-                              : "border-gray-200 hover:border-pale-sage-300"
+                              ? "border-pastel-orange-500 bg-pastel-orange-50"
+                              : "border-gray-200 hover:border-pastel-orange-300"
                           }`}
                         >
-                          <type.icon className="w-8 h-8 mx-auto mb-2 text-pale-sage-600" />
+                          <type.icon className="w-8 h-8 mx-auto mb-2 text-pastel-orange-600" />
                           <div className="font-medium text-gray-900">{type.name}</div>
                         </button>
                       ))}
@@ -245,8 +314,8 @@ const QuotePage = () => {
                           onClick={() => updateFormData("projectSize", size.id)}
                           className={`p-4 rounded-xl border-2 text-left transition-all duration-200 ${
                             formData.projectSize === size.id
-                              ? "border-pale-sage-500 bg-pale-sage-50"
-                              : "border-gray-200 hover:border-pale-sage-300"
+                              ? "border-pastel-orange-500 bg-pastel-orange-50"
+                              : "border-gray-200 hover:border-pastel-orange-300"
                           }`}
                         >
                           <div className="font-medium text-gray-900">{size.name}</div>
@@ -410,7 +479,7 @@ const QuotePage = () => {
                     <p className="text-gray-600">Estimated cost for your construction estimating services</p>
                   </div>
 
-                  <div className="bg-gradient-to-r from-pale-sage-50 to-muted-coral-50 rounded-xl p-6 mb-8">
+                  <div className="bg-pastel-orange-50 rounded-xl p-6 mb-8">
                     <h3 className="font-semibold text-gray-900 mb-4">Quote Summary</h3>
                     <div className="grid grid-cols-2 gap-4 text-sm">
                       <div>
@@ -445,12 +514,12 @@ const QuotePage = () => {
                       This is a preliminary estimate. For a detailed quote, schedule a consultation with our experts.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                      <button className="bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                      <button className="bg-pastel-orange-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
                         Accept Quote & Continue
                       </button>
                       <button
                         onClick={() => setCurrentStep(1)}
-                        className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-pale-sage-500 hover:text-pale-sage-600 transition-all duration-300"
+                        className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg hover:border-pastel-orange-500 hover:text-pastel-orange-600 transition-all duration-300"
                       >
                         Start Over
                       </button>
@@ -470,7 +539,7 @@ const QuotePage = () => {
                 className={`flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 ${
                   currentStep === 1
                     ? "text-gray-400 cursor-not-allowed"
-                    : "text-gray-700 hover:text-pale-sage-600 hover:bg-pale-sage-50"
+                                            : "text-gray-700 hover:text-pastel-orange-600 hover:bg-pastel-orange-50"
                 }`}
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
@@ -481,7 +550,7 @@ const QuotePage = () => {
                 disabled={!isStepValid()}
                 className={`flex items-center px-8 py-3 rounded-lg font-medium transition-all duration-200 ${
                   isStepValid()
-                    ? "bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white hover:shadow-lg transform hover:scale-105"
+                                          ? "bg-pastel-orange-500 text-white hover:shadow-lg transform hover:scale-105"
                     : "bg-gray-300 text-gray-500 cursor-not-allowed"
                 }`}
               >
@@ -494,7 +563,7 @@ const QuotePage = () => {
       </section>
 
       {/* Consultation Options */}
-      <section className="py-20 bg-gradient-to-br from-warm-beige-50 to-pale-sage-50">
+              <section className="py-20 bg-cream-orange-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -518,7 +587,7 @@ const QuotePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className={`glass-morphism rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl ${
-                  selectedConsultation === consultation.id ? "ring-2 ring-pale-sage-500" : ""
+                                      selectedConsultation === consultation.id ? "ring-2 ring-pastel-orange-500" : ""
                 }`}
                 onClick={() => setSelectedConsultation(consultation.id)}
               >
@@ -526,10 +595,10 @@ const QuotePage = () => {
                   <consultation.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-serif text-2xl font-bold text-gray-900 mb-2">{consultation.name}</h3>
-                <div className="text-lg font-semibold text-pale-sage-600 mb-2">{consultation.price}</div>
+                                  <div className="text-lg font-semibold text-pastel-orange-600 mb-2">{consultation.price}</div>
                 <div className="text-gray-600 mb-4">{consultation.duration}</div>
                 <p className="text-gray-600 mb-6">{consultation.description}</p>
-                <button className="w-full bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-200">
+                                  <button className="w-full bg-pastel-orange-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-200">
                   Book Now
                 </button>
               </motion.div>
@@ -554,8 +623,8 @@ const QuotePage = () => {
 
               <div className="space-y-6">
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-pale-sage-100 rounded-lg flex items-center justify-center mr-4">
-                    <Phone className="w-6 h-6 text-pale-sage-600" />
+                                  <div className="w-12 h-12 bg-pastel-orange-100 rounded-lg flex items-center justify-center mr-4">
+                  <Phone className="w-6 h-6 text-pastel-orange-600" />
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">(555) 123-4567</div>
@@ -630,7 +699,7 @@ const QuotePage = () => {
                 />
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+                  className="w-full bg-pastel-orange-500 text-white px-6 py-4 rounded-lg font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300"
                 >
                   Send Message
                 </button>

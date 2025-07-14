@@ -5,6 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, ChevronDown } from "lucide-react"
+import Image from "next/image"
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -51,12 +52,12 @@ const Header = () => {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 luxury-gradient rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">V</span>
+            <div className="w-18 h-18 flex items-center justify-center">
+              <Image src="/images/logo.png" alt="The Value Engineering Logo" width={72} height={72} className="object-contain" priority />
             </div>
             <div>
-              <h1 className="font-serif text-2xl font-bold text-gray-900">Value Engineer Pro</h1>
-              <p className="text-xs text-gray-600 -mt-1">Precision You Can Build On</p>
+              <h1 className="font-serif text-2xl font-bold text-gray-900">The Value Engineering</h1>
+              <p className="text-xs text-gray-600 -mt-1">Peace of Mind in Estimating</p>
             </div>
           </Link>
 
@@ -110,7 +111,7 @@ const Header = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <Link
               href="/quote"
-              className="bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-lg transform hover:scale-105 transition-all duration-200"
+              className="bg-pastel-orange-500 text-white px-6 py-3 rounded-lg font-bold shadow-lg hover:bg-pastel-orange-600 hover:scale-105 transition-all duration-200 border-2 border-pastel-orange-600"
             >
               Get Quote
             </Link>
@@ -151,7 +152,7 @@ const Header = () => {
                 ))}
                 <Link
                   href="/quote"
-                  className="block w-full text-center bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white px-6 py-3 rounded-lg font-medium"
+                  className="block w-full text-center bg-pastel-orange-500 text-white px-6 py-3 rounded-lg font-bold border-2 border-pastel-orange-600 shadow-lg mt-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Get Quote

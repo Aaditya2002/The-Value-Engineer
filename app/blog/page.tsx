@@ -107,7 +107,7 @@ const BlogPage = () => {
   const regularPosts = filteredPosts.filter((post) => !post.featured)
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-0">
       {/* Hero Section */}
       <section className="relative py-20 overflow-hidden">
         {/* Background Image */}
@@ -157,7 +157,7 @@ const BlogPage = () => {
                   onClick={() => setSelectedCategory(category)}
                   className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
                     selectedCategory === category
-                      ? "bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white"
+                      ? "bg-pastel-orange-500 text-white"
                       : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
                   }`}
                 >
@@ -197,7 +197,7 @@ const BlogPage = () => {
                         height={400}
                         className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                       />
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-gradient-to-r from-pale-sage-500 to-muted-coral-500 text-white rounded-full text-sm font-medium">
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-pastel-orange-500 text-white rounded-full text-sm font-medium">
                         Featured
                       </div>
                       <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-gray-700 rounded-full text-sm font-medium">
@@ -213,25 +213,25 @@ const BlogPage = () => {
                         <Clock className="w-4 h-4 mr-1" />
                         <span>{post.readTime}</span>
                       </div>
-                      <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4 group-hover:text-pale-sage-600 transition-colors">
+                      <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4 group-hover:text-pastel-orange-600 transition-colors">
                         {post.title}
                       </h3>
                       <p className="text-gray-600 mb-6 leading-relaxed">{post.excerpt}</p>
-                      <div className="flex items-center justify-between">
-                        <div className="flex flex-wrap gap-2">
-                          {post.tags.slice(0, 2).map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-2 py-1 bg-pale-sage-100 text-pale-sage-700 rounded-full text-xs font-medium"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                        <Link
-                          href={`/blog/${post.id}`}
-                          className="inline-flex items-center text-pale-sage-600 font-medium hover:text-pale-sage-700 transition-colors"
-                        >
+                                              <div className="flex items-center justify-between">
+                          <div className="flex flex-wrap gap-2">
+                            {post.tags.slice(0, 2).map((tag) => (
+                              <span
+                                key={tag}
+                                className="px-2 py-1 bg-pastel-orange-100 text-pastel-orange-700 rounded-full text-xs font-medium"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                          <Link
+                            href={`/blog/${post.id}`}
+                            className="inline-flex items-center text-pastel-orange-600 font-medium hover:text-pastel-orange-700 transition-colors"
+                          >
                           Read More
                           <ArrowRight className="ml-1 w-4 h-4" />
                         </Link>
@@ -246,7 +246,7 @@ const BlogPage = () => {
       )}
 
       {/* Regular Posts Grid */}
-      <section className="py-20 bg-gradient-to-br from-warm-beige-50 to-pale-sage-50">
+      <section className="py-20 bg-cream-orange-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {filteredPosts.length === 0 ? (
             <div className="text-center py-20">

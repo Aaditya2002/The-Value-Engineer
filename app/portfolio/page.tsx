@@ -201,9 +201,9 @@ const PortfolioPage = () => {
     activeFilter === "All" ? projects : projects.filter((project) => project.type === activeFilter)
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-0">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-warm-beige-50 via-white to-pale-sage-50">
+      <section className="py-20 bg-cream-orange-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -215,7 +215,7 @@ const PortfolioPage = () => {
               Our <span className="text-gradient">Portfolio</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Explore 500+ successful projects worth $2.8B in total value, delivered with precision and excellence
+              Portfolio photos & details will be provided later. For now, contact us for references or case studies.
             </p>
           </motion.div>
 
@@ -227,7 +227,7 @@ const PortfolioPage = () => {
               transition={{ duration: 0.6 }}
               className="text-center"
             >
-              <div className="text-4xl font-bold text-pale-sage-600 mb-2">500+</div>
+              <div className="text-4xl font-bold text-pastel-orange-600 mb-2">500+</div>
               <div className="text-gray-600">Projects Completed</div>
             </motion.div>
             <motion.div
@@ -236,7 +236,7 @@ const PortfolioPage = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl font-bold text-muted-coral-600 mb-2">$2.8B</div>
+              <div className="text-4xl font-bold text-soft-orange-600 mb-2">$2.8B</div>
               <div className="text-gray-600">Total Project Value</div>
             </motion.div>
             <motion.div
@@ -245,7 +245,7 @@ const PortfolioPage = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-4xl font-bold text-dusty-lavender-600 mb-2">15%</div>
+              <div className="text-4xl font-bold text-warm-orange-600 mb-2">15%</div>
               <div className="text-gray-600">Average Cost Savings</div>
             </motion.div>
             <motion.div
@@ -254,7 +254,7 @@ const PortfolioPage = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-center"
             >
-              <div className="text-4xl font-bold text-mist-blue-600 mb-2">99.2%</div>
+              <div className="text-4xl font-bold text-light-orange-600 mb-2">99.2%</div>
               <div className="text-gray-600">Overall Accuracy</div>
             </motion.div>
           </div>
@@ -473,25 +473,21 @@ const PortfolioPage = () => {
         )}
       </AnimatePresence>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-pale-sage-500 via-muted-coral-500 to-dusty-lavender-500">
+      {/* Ready to Join Our Success Stories? CTA Section */}
+      <section className="py-16 bg-pastel-orange-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Join Our Success Stories?
-            </h2>
-            <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-              Let us help you achieve the same level of precision and cost savings for your next project
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                Start Your Project
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-gray-900 transition-all duration-300">
-                Schedule Consultation
-              </button>
-            </div>
-          </motion.div>
+          <h2 className="font-serif text-3xl font-bold text-gray-900 mb-6">Ready to Join Our Success Stories?</h2>
+          <p className="text-lg text-gray-700 mb-8">
+            Discover how we can help you achieve outstanding results on your next project. Contact us for references or to discuss your needs.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/quote" className="bg-pastel-orange-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pastel-orange-700 transition-colors">
+              Get Your Free Sample
+            </a>
+            <a href="/contact" className="border-2 border-pastel-orange-600 text-pastel-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-pastel-orange-600 hover:text-white transition-colors">
+              Contact Us
+            </a>
+          </div>
         </div>
       </section>
     </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 const LoadingAnimation = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -26,9 +27,9 @@ const LoadingAnimation = () => {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              className="w-16 h-16 luxury-gradient rounded-full flex items-center justify-center mx-auto mb-6"
+              className="w-[100px] h-[100px] flex items-center justify-center mx-auto mb-6"
             >
-              <span className="text-white font-bold text-2xl">V</span>
+              <Image src="/images/logo.png" alt="The Value Engineering Logo" width={100} height={100} className="object-contain" priority />
             </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -36,7 +37,7 @@ const LoadingAnimation = () => {
               transition={{ delay: 0.5 }}
               className="font-serif text-3xl font-bold text-gray-900 mb-2"
             >
-              Value Engineer Pro
+              The Value Engineering
             </motion.h1>
             <motion.p
               initial={{ opacity: 0 }}
@@ -44,7 +45,7 @@ const LoadingAnimation = () => {
               transition={{ delay: 1 }}
               className="text-gray-600"
             >
-              Precision You Can Build On
+              Peace of Mind in Estimating
             </motion.p>
           </div>
         </motion.div>

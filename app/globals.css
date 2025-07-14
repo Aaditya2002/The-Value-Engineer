@@ -32,7 +32,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-gradient-to-br from-warm-beige-50 via-white to-pale-sage-50 font-sans text-gray-900;
+    @apply bg-cream-orange-50 font-sans text-gray-900;
   }
 
   .glass-morphism {
@@ -40,11 +40,11 @@
   }
 
   .luxury-gradient {
-    @apply bg-gradient-to-r from-pale-sage-400 via-muted-coral-300 to-dusty-lavender-400;
+    @apply bg-pastel-orange-400;
   }
 
   .text-gradient {
-    @apply bg-gradient-to-r from-pale-sage-600 via-muted-coral-500 to-dusty-lavender-600 bg-clip-text text-transparent;
+    @apply text-pastel-orange-600;
   }
 }
 
@@ -54,13 +54,35 @@
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-warm-beige-100;
+  @apply bg-cream-orange-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-pale-sage-300 rounded-full;
+  @apply bg-pastel-orange-300 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-pale-sage-400;
+  @apply bg-pastel-orange-400;
+}
+
+/* Ensure video background is always covered and overlays are readable */
+.hero-section video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+}
+.hero-section .overlay {
+  background: rgba(0,0,0,0.4);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* FAQ and service card tweaks */
+.faq-section .rounded-xl {
+  border-left: 4px solid #fdba74;
+}
+.service-card {
+  border-top: 3px solid #fdba74;
 }
